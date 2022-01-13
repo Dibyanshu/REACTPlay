@@ -6,12 +6,12 @@ interface Iprop {
     people: Prop["people"]
 }
 
-const AddToList: React.FunctionComponent<Iprop> = (setPeople, people) => {
+const AddToList: React.FunctionComponent<Iprop> = ({ setPeople, people }) => {
 
     const [input, setInput] = useState({
         name: '',
         img: '',
-        age: undefined,
+        age: '',
         notes: ''
     });
 
@@ -29,17 +29,17 @@ const AddToList: React.FunctionComponent<Iprop> = (setPeople, people) => {
             ...people,
             {
                 name: input.name,
-                age: input.age,
-                img: input.img,
+                age: parseInt(input.age, 10),
+                url: input.img,
                 notes: input.notes
             }
         ]);
 
         setInput({
-            name: "",
-            age: undefined,
-            img: "",
-            notes: ""
+            name: '',
+            age: '',
+            img: '',
+            notes: ''
         })
     }
 
@@ -51,7 +51,6 @@ const AddToList: React.FunctionComponent<Iprop> = (setPeople, people) => {
             <input
                 type="text"
                 onChange={handleChange}
-                className="AddToList-input"
                 name="name"
                 value={input.name}
                 placeholder="Name"
@@ -59,7 +58,6 @@ const AddToList: React.FunctionComponent<Iprop> = (setPeople, people) => {
             <input
                 type="text"
                 onChange={handleChange}
-                className="AddToList-input"
                 name="age"
                 value={input.age}
                 placeholder="Age"
@@ -67,14 +65,12 @@ const AddToList: React.FunctionComponent<Iprop> = (setPeople, people) => {
             <input
                 type="text"
                 onChange={handleChange}
-                className="AddToList-input"
                 name="img"
                 value={input.img}
                 placeholder="Image Url"
             />
             <textarea
                 onChange={handleChange}
-                className="AddToList-input"
                 name="note"
                 value={input.notes}
                 placeholder="Note"

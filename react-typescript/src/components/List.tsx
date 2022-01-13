@@ -1,9 +1,9 @@
 import React from "react";
-import { Istate as Iprop } from "../App";
+import { Istate as Prop } from "../App";
 
-// interface Iprop {
-//     people: { name: string, url: string, age: number, notes?: string }[];
-// }
+interface Iprop {
+    people: Prop["people"]
+}
 
 const List: React.FunctionComponent<Iprop> = ({ people }) => {
 
